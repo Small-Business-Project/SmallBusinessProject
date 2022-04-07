@@ -5,7 +5,7 @@
 npm i express morgan  nodemon ejs body-parser dotenv mongoose axios
 ```
 
-Then Create config.env file and create PORT and MONGO_URI Variable and specify Value.
+Then Create config.env file and create PORT and specify Value.
 To execute this project just type
 ```
 npm start
