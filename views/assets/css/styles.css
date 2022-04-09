@@ -38,7 +38,7 @@ li {
     margin: 0 auto;
     padding: 0 12px;
 }
-#header nav{
+nav{
     background-color: #882345;
     height: 100px; /* Navigation Pipe*/
     width: 100%;   /* Width */
@@ -51,8 +51,8 @@ li {
 }
 
 .nav__link--list {
-    text-align: center;
     display: flex;
+    padding-left: 60%;
 }
 /* Sets the color of navigation text and spacing*/
 .nav__link--anchor{
