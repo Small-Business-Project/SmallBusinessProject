@@ -20,6 +20,9 @@ app.use(bodyparser.urlencoded({ extended : true}))
 app.get('/',(req,res)=>{
     res.render('index');
 })
+app.get('/appointments',(req,res)=>{
+    res.render('appointments');
+})
 
 // set view engine
 app.set("view engine", "ejs")
