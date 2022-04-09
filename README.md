@@ -1,6 +1,6 @@
 # SmallBusinessProject
 
-#### To Run this project Clone it and install modules using
+#### To Run this project Clone it and install modules using. This will not work if you have an existing Node Modules Folder
 ```
 npm i express morgan  nodemon ejs body-parser dotenv mongoose axios
 ```
