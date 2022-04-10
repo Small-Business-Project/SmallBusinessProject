@@ -1,0 +1,95 @@
+body{
+    margin: 0;
+    background-color: rgb(194, 189, 189);
+}
+#showPopUp{
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    right: 32px;
+    bottom: 32px;
+    border-radius: 50%;
+    font-size: 32px;
+    border: thin;
+    transition: all 0.2s ease-in-out;
+}
+.popUpContainer{
+    position: absolute;
+    width: 300px;
+    height: 500px;
+    background-color: rgb(255, 255, 255);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    display: flex;
+    flex-flow: column;
+    padding: 16px;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 16px;
+}
+.closePopUpContainer{
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: thin;
+    font-size: 24px;
+    padding: 0;
+    transform: rotate(45deg);
+}
+.submit{
+    border-radius: 16px;
+    width: 100px;
+    height: 60px;
+    border: thin;
+    background-color: black;
+    cursor: pointer;
+}
+.submit:hover{
+    background-color: #701634;
+}
+.hide{
+    display: none;
+}
+.gridContainer{
+    display: grid;
+    padding: 10%;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    justify-content: center;
+    column-gap: 32px;
+    row-gap: 32px;
+}
+#timeslots{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 16px;
+
+}
+#timeslots .day{
+    width: 100%;
+}
+.popUpContainer h3{
+    color: black;
+}
+.day{
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    width: 50%;
+    background-color: black;
+    border-radius: 16px;
+}
+.day:hover{
+    background-color: #701634;
+    cursor: pointer;
+}
+.day a{
+    padding: 16px;
+}
