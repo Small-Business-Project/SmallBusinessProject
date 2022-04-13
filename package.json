@@ -24,12 +24,19 @@
   "homepage": "https://github.com/Small-Business-Project/SmallBusinessProject#readme",
   "dependencies": {
     "axios": "^0.26.1",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.0",
     "dotenv": "^16.0.0",
     "ejs": "^3.1.6",
     "express": "^4.17.3",
+    "express-flash": "^0.0.2",
+    "express-session": "^1.17.2",
+    "flash": "^1.1.0",
+    "method-override": "^3.0.0",
     "mongoose": "^6.2.10",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "passport": "^0.5.2",
+    "sessions": "^0.0.2-7"
   }
 }
