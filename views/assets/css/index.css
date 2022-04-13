@@ -1,0 +1,33 @@
+h1{
+	color: black;
+	text-align: left;
+	margin-left:20px
+	margin-right:30px;
+	padding-right: 40%;
+	padding-left: 10%;
+	padding-top: 3%;
+}
+h2{
+	color: black;
+	text-align: left;
+	margin-left:20px
+	margin-right:30px;
+	padding-right: 40%;
+	padding-left: 10%;
+	padding-top: 5%;
+
+}
+.FloatRight{
+	float:Right;
+	margin-left:20px
+	margin-right:30px;
+	padding-right:100px;
+	padding-left: 100px;
+	padding-top: 30px;
+	height: 600px;
+	width: 1000px;
+
+
+}
+
+
