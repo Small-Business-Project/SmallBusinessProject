@@ -26,36 +26,41 @@ li {
 }
 
 .flex{
-    display: flex;
+    display: flex 100px;
 }
 .flex-1{
     flex: 1;
 }
 
 .row{
+    overflow: auto;
     width: 100%;
     max-width:800px;
     margin: 0 auto;
     padding: 0 12px;
 }
 nav{
+    
+    overflow: auto;
     background-color: #882345;
-    height: 100px; /* Navigation Pipe*/
-    width: 100%;   /* Width */
-    max-width: 1000px; /* Sets pixels */
+    height: 100px;  /*Navigation Pipe */
+    width: *100%;   /* Width */
+    max-width: auto; /*1000px;*/ /* Sets pixels */
     margin: 0 auto;    /* Centers */
     display: flex;     /* Position*/
     justify-content: space-between; /* Sends to both sides of page */
-    align-items: center;  /* Centers Veritcally*/
+    align-items: center; /* Centers Veritcally*/
     padding: 0 12px;
+
 }
 
 .nav__link--list {
     display: flex;
     padding-left: 60%;
-}
+ }
 /* Sets the color of navigation text and spacing*/
 .nav__link--anchor{
+    
     margin: 0 12px;
     color: wh;
     text-decoration: none;
@@ -63,6 +68,7 @@ nav{
 }
 /* Sets a oval border around contact text and whitens text*/
 .nav__link--anchor-primary{
+    
     background-color: #701634;
     padding: 8px 20px;
     border-radius: 50px;
@@ -70,5 +76,6 @@ nav{
 }
 /* Shifts colors when you hover over conact*/
 .nav__link--anchor-primary:hover {
+    
     background-color: wheat; 
 }
