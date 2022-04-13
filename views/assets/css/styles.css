@@ -42,7 +42,7 @@ li {
 nav{
     
     overflow: auto;
-    background-color: #882345;
+    background-color: #0A0A00;
     height: 100px;  /*Navigation Pipe */
     width: *100%;   /* Width */
     max-width: auto; /*1000px;*/ /* Sets pixels */

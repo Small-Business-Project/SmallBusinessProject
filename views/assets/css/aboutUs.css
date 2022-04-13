@@ -1,0 +1,44 @@
+
+
+.aboutMe {
+	width: 80%;
+	margin: auto;
+	padding-top: 80px;
+	padding-bottom: 50px;
+}
+
+
+.aboutCol {
+	flex-basis: 48%;
+	padding: 30px 2px;
+}
+
+.aboutCol > h1 {
+	padding-top: 0;
+    text-align: center;
+	color: black;
+}
+
+.aboutCol > p {
+	padding: 15px 0 25px;
+    text-align: justify;
+	color: black;
+}
+/*creates the box to click in main*/
+.hero-btn {
+	display: inline-block;
+    position: center;
+	text-decoration: none;
+	color: #FF2511;
+	border: 1px solid #FF2511;
+	padding: 14px 36px;
+	font-size: 17px;
+	background: solid;
+	position: relative;
+	cursor: pointer;
+}
+.hero-btn:hover {
+	border: 1px solid #EBE8E0;
+	background: #EBE8E0;
+	transition: 1s;
+}

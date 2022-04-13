@@ -50,6 +50,11 @@ app.get('/login',(req,res)=>{
 app.get('/register',(req,res)=>{
     res.render('register');
 })
+app.get('/aboutUs',(req,res)=>{
+    res.render('aboutUs');
+})
+
+
 
 // set view engine
 app.set("view engine", "ejs");
