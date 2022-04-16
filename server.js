@@ -58,10 +58,13 @@ let monthNames = ["", "January", "February", "March", "April", "May", "June", "J
 for (let i = 1; i<monthNames.length; i++){
     for (let j = 1; j <= 31; j++){
         app.get(`/${monthNames[i]}-${j}`, (req,res) => {
-            res.render("index");
+            Day.getDay(`${monthNames[i]}-${j}`).then(function(day){
+                res.render("selectTime", {date: day});
+            }).catch(function(error){
+                res.error("Something went wrong! " + error);
+            });
         })
     }
-
 }
 
 
@@ -87,10 +90,6 @@ mongoose
         useNewUrlParser: true,
     })
 */
-// load assets
-//app.use('/css', express.static(path.resolve(__dirname, "assets/css")))
-//app.use('/img', express.static(path.resolve(__dirname, "assets/img")))
-//app.use('/js', express.static(path.resolve(__dirname, "assets/js")))
 
 
 app.listen(PORT, ()=> { console.log(`Server is running on http://localhost:${PORT}`)});
