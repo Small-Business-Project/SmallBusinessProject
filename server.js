@@ -42,8 +42,8 @@ app.use(bodyparser.urlencoded({ extended : true}))
 app.get('/',(req,res)=>{
     res.render('index');
 })
-app.get('/appointments',(req,res)=>{
-    res.render('appointments');
+app.get('/selectDay',(req,res)=>{
+    res.render('selectDay');
 })
 app.get('/login',(req,res)=>{
     res.render('login')
