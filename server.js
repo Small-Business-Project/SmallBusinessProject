@@ -8,6 +8,7 @@ const flash = require('express-flash');
 const session = require('express-session');
 
 const User = require("./models/User");
+const Day = require("./models/Day");
 
 const path = require('path');
 
@@ -53,7 +54,15 @@ app.get('/register',(req,res)=>{
 app.get('/aboutUs',(req,res)=>{
     res.render('aboutUs');
 })
+let monthNames = ["", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+for (let i = 1; i<monthNames.length; i++){
+    for (let j = 1; j <= 31; j++){
+        app.get(`/${monthNames[i]}-${j}`, (req,res) => {
+            res.render("index");
+        })
+    }
 
+}
 
 
 // set view engine

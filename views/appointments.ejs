@@ -10,27 +10,10 @@
         <% for(let i=1; i<=numberOfDays; i++) { %>
 
             <div class="day">
-                <a class="day--link" id="<%= currentMonth + "-" + i%>"><%= currentMonth + " " + i %></a>
+                <a href="<%= currentMonth + "-" + i%>" class="day--link" id="<%= currentMonth + "-" + i%>"><%= currentMonth + " " + i %></a>
             </div>
 
         <% } %>
-    </div>
-    <div class="popUpContainer hide">
-        <button class="closePopUpContainer">+</button>
-        <h3>Select Timeslot</h3>
-        <form method="post" action="/selectAppointment">
-            <div id="timeslots">
-                <div class="day">9:00 AM</div>
-                <div class="day">10:00 AM</div>
-                <div class="day">11:00 AM</div>
-                <div class="day">12:00 PM</div>
-                <div class="day">01:00 PM</div>
-                <div class="day">02:00 PM</div>
-                <div class="day">03:00 PM</div>
-                <div class="day">04:00 PM</div>
-            </div>
-            <input class="submit" type="submit" value="Submit">
-        </form>
     </div>
 
 <script src="/assets/js/appointments.js"></script>
