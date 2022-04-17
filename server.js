@@ -54,6 +54,9 @@ app.get('/register',(req,res)=>{
 app.get('/aboutUs',(req,res)=>{
     res.render('aboutUs');
 })
+app.post('/generateDays', (req,res) => {
+    // do something
+})
 let monthNames = ["", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 for (let i = 1; i<monthNames.length; i++){
     for (let j = 1; j <= 31; j++){
