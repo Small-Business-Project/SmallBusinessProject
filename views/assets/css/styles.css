@@ -81,4 +81,10 @@ nav{
     background-color: wheat; 
 }
 
-.
+.generate{
+    display: flex;
+    flex-direction: column;
+    padding: 0 10% 0 10%;
+    gap: 8px;
+  }
+}
