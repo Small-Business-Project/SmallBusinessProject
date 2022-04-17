@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,700&display=swap');
 *
 {
-    color: white;
     font-family: 'Lato', sans-serif;
     padding: 0;
     margin: 0;
@@ -39,12 +38,14 @@ li {
     margin: 0 auto;
     padding: 0 12px;
 }
+nav *{
+    color: white;
+}
 nav{
-    
     overflow: auto;
     background-color: #0A0A00;
     height: 100px;  /*Navigation Pipe */
-    width: *100%;   /* Width */
+    width: 100%;   /* Width */
     max-width: auto; /*1000px;*/ /* Sets pixels */
     margin: 0 auto;    /* Centers */
     display: flex;     /* Position*/
@@ -79,3 +80,5 @@ nav{
     
     background-color: wheat; 
 }
+
+.

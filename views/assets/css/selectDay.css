@@ -61,6 +61,9 @@ body{
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     justify-content: center;
 }
+.gridContainer *{
+    color: white;
+}
 #timeslots{
     display: flex;
     flex-direction: column;

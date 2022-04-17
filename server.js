@@ -11,6 +11,7 @@ const User = require("./models/User");
 const Day = require("./models/Day");
 
 const path = require('path');
+const { allowedNodeEnvironmentFlags } = require('process');
 
 /*
 const initializePassport = require('./passport-config')
@@ -54,8 +55,13 @@ app.get('/register',(req,res)=>{
 app.get('/aboutUs',(req,res)=>{
     res.render('aboutUs');
 })
+app.get('/generateDays', (req,res) => {
+    res.render("generateDays");
+})
 app.post('/generateDays', (req,res) => {
-    // do something
+    console.log("From: " + JSON.stringify(req.body.generate.from));
+    console.log("To: " + JSON.stringify(req.body.generate.to));
+    res.render("generateDays");
 })
 let monthNames = ["", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 for (let i = 1; i<monthNames.length; i++){
