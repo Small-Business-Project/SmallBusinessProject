@@ -8,7 +8,8 @@ const flash = require('express-flash');
 const session = require('express-session');
 
 const User = require("./models/User");
-const Day = require("./models/Day");
+const DayModel = require("./models/Day");
+mongoose.connect('mongodb://localhost:27017/test');
 
 const path = require('path');
 const { allowedNodeEnvironmentFlags } = require('process');
@@ -59,10 +60,41 @@ app.get('/generateDays', (req,res) => {
     res.render("generateDays");
 })
 app.post('/generateDays', (req,res) => {
-    console.log("From: " + JSON.stringify(req.body.generate.from));
-    console.log("To: " + JSON.stringify(req.body.generate.to));
+    let from = new Date(req.body.generate.from);
+    let to = new Date(req.body.generate.to);
+    let startHour = 9 ;
+    
+    let startDate = from;
+    startDate.setHours(startHour);
+    
+    startDate.setDate(startDate.getDate() + 1);
+    to.setDate(to.getDate() + 1);
+    
+    let times;
+    let date;
+
+    while(startDate <= to){
+        let firstHour = startDate;
+        times = [];
+        while(startDate.getHours() <= 16){
+            times.push(startDate);
+            startDate.setHours(startDate.getHours() + 1);
+        } 
+        date = new DayModel({date: firstHour, timeslots: [1,2,3,4,5,6,7,8]});
+
+        date.save().then(function(){
+            console.log("Added day to database!");
+        }).catch(function(error){
+            console.log("Failed to add day to database!");
+        });
+        startDate.setDate(startDate.getDate() + 1);
+        startDate.setHours(startHour);
+        
+    }
     res.render("generateDays");
 })
+
+
 let monthNames = ["", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 for (let i = 1; i<monthNames.length; i++){
     for (let j = 1; j <= 31; j++){
