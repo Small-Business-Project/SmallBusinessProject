@@ -62,39 +62,46 @@ app.get('/generateDays', (req,res) => {
 app.post('/generateDays', (req,res) => {
     let from = new Date(req.body.generate.from);
     let to = new Date(req.body.generate.to);
-    let startHour = 9 ;
+    let startHour = 9;
     
-    let startDate = from;
-    startDate.setHours(startHour);
+    from.setHours(startHour);
     
-    startDate.setDate(startDate.getDate() + 1);
+    from.setDate(from.getDate() + 1);
     to.setDate(to.getDate() + 1);
     
     let times;
     let date;
 
-    while(startDate <= to){
-        let firstHour = startDate;
+    let currentDate = from;
+
+    while(currentDate <= to){
         times = [];
-        while(startDate.getHours() <= 16){
-            times.push(startDate);
-            startDate.setHours(startDate.getHours() + 1);
+        while(currentDate.getHours() <= 16){
+            times.push(currentDate);
+            currentDate.setHours(currentDate.getHours() + 1);
         } 
-        date = new DayModel({date: firstHour, timeslots: times});
+        date = new DayModel({date: currentDate, timeslots: times});
 
         date.save().then(function(){
             console.log("Added day to database!");
         }).catch(function(error){
             console.log("Failed to add day to database!");
         });
-        startDate.setDate(startDate.getDate() + 1);
-        startDate.setHours(startHour);
+        currentDate.setDate(currentDate.getDate() + 1);
+        currentDate.setHours(startHour);
         
     }
     res.render("generateDays");
 })
 
-
+app.get("/listTest", function(req, res){
+    DayModel.listAllDays().then(function(days){
+        res.render("listTest", {days: days});
+    }).catch(function(error){
+        res.error("Something went wrong! " + error);
+    });
+    
+});
 
 
 

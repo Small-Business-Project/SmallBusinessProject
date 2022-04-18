@@ -12,7 +12,9 @@ DaySchema.statics.getDay = function(day) {
     const month = monthNames.indexOf(temp[0]);
     return this.find({date : {$eq: new Date(2021, month, temp[1])}});
 };
-
+DaySchema.statics.listAllDays = function(){
+    return this.find({});
+}
 let DayModel = mongoose.model('days', DaySchema);
 
 module.exports = DayModel;
