@@ -80,7 +80,7 @@ app.post('/generateDays', (req,res) => {
             times.push(startDate);
             startDate.setHours(startDate.getHours() + 1);
         } 
-        date = new DayModel({date: firstHour, timeslots: [1,2,3,4,5,6,7,8]});
+        date = new DayModel({date: firstHour, timeslots: times});
 
         date.save().then(function(){
             console.log("Added day to database!");
@@ -95,18 +95,7 @@ app.post('/generateDays', (req,res) => {
 })
 
 
-let monthNames = ["", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-for (let i = 1; i<monthNames.length; i++){
-    for (let j = 1; j <= 31; j++){
-        app.get(`/${monthNames[i]}-${j}`, (req,res) => {
-            Day.getDay(`${monthNames[i]}-${j}`).then(function(day){
-                res.render("selectTime", {date: day});
-            }).catch(function(error){
-                res.error("Something went wrong! " + error);
-            });
-        })
-    }
-}
+
 
 
 // set view engine
