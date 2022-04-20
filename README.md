@@ -10,3 +10,7 @@ To execute this project just type
 ```
 npm start or nodemon server.js
 ```
+Additionally, create a single .env file and populate it with
+```
+SESSION_SECRET=abc123
+```
