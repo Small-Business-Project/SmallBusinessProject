@@ -1,18 +1,20 @@
 <!--include header-->
 <%-include('include/_header')%>
-<!--include header-->
-<div class ="loginTab">
-    <h1>SIGN IN TO YOUR ACCOUNT</h1>
-    <form action="/login", method="POST">
-        <input type="email" 
-        name="email" 
-        placeholder="johnsmith@nmsu.edu"
-        />
-        <input type="password" name="password" placeholder="* * * * * * * * *" />
-        <button>SIGN IN</button>
-        <button>Forgot your password? </button>
-    </form>
-</div>
-<!--include footer-->
-<%-include('include/_footer')%>
-<!--include footer-->
+    <!--include header-->
+    <div class="loginTab">
+        <h1>SIGN IN TO YOUR ACCOUNT</h1>
+        <% if (messages) { %>
+            <p>
+                <%= message.error %>
+            </p>
+            <% } %>
+                <form action="/login" , method="POST">
+                    <input type="email" name="email" placeholder="johnsmith@nmsu.edu" />
+                    <input type="password" name="password" placeholder="* * * * * * * * *" />
+                    <button>SIGN IN</button>
+                    <button>Forgot your password? </button>
+                </form>
+    </div>
+    <!--include footer-->
+    <%-include('include/_footer')%>
+        <!--include footer-->
