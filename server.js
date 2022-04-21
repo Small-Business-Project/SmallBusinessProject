@@ -68,35 +68,41 @@ app.get('/generateDays', (req, res) => {
 app.post('/generateDays', (req, res) => {
     let from = new Date(req.body.generate.from);
     let to = new Date(req.body.generate.to);
-    let startHour = 9;
 
-    from.setHours(startHour);
+    from.setHours(9);
 
     from.setDate(from.getDate() + 1);
     to.setDate(to.getDate() + 1);
 
-    let times;
+    let times = [];
     let date;
 
     let currentDate = from;
 
-    while (currentDate <= to) {
-        times = [];
+    while (currentDate < to) {
+
+        // iterating from 9 am to 4 pm
         while (currentDate.getHours() <= 16) {
-            times.push(currentDate);
+            times.push(currentDate.getHours());
             currentDate.setHours(currentDate.getHours() + 1);
         }
-        date = new DayModel({ date: currentDate, timeslots: times });
 
+        // saving data in database
+        date = new DayModel({ date: currentDate, timeslots: times });
+        console.log(date)
         date.save().then(function() {
             console.log("Added day to database!");
         }).catch(function(error) {
             console.log("Failed to add day to database!");
         });
+
+        // incrementing day and resetting time
         currentDate.setDate(currentDate.getDate() + 1);
-        currentDate.setHours(startHour);
+        currentDate.setHours(9);
+        times = [];
 
     }
+    
     res.render("generateDays");
 })
 
