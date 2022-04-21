@@ -11,7 +11,7 @@ const methodOverride = require('method-override')
 const bcrypt = require('bcryptjs');
 const User = require("./models/User");
 const DayModel = require("./models/Day");
-//mongoose.connect('mongodb://localhost:27017/test');
+
 
 const path = require('path');
 const { allowedNodeEnvironmentFlags } = require('process');
@@ -35,6 +35,7 @@ initializePassport(
     }
 );
 
+
 const app = express();
 //.env file allows you to change your localhost connection port
 dotenv.config({ path: 'config.env' })
@@ -46,6 +47,20 @@ app.use(morgan('tiny'));
 
 // parse request to body-parser
 app.use(bodyparser.urlencoded({ extended: true }))
+
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+}));
+app.use(passport.initialize())
+app.use(passport.session())
+app.use(methodOverride("_method"))
+app.use(express.static("views"));
+app.use(express.urlencoded({ extended: true }));
+app.use(flash());
+
+
 
 app.get('/', (req, res) => {
     res.render('index');
@@ -159,18 +174,7 @@ app.get("/listTest", function(req, res) {
 
 // set view engine
 app.set("view engine", "ejs");
-app.use(express.static("views"));
-app.use(express.urlencoded({ extended: true }));
-app.use(flash());
 
-app.use(session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: false,
-}));
-app.use(passport.initialize())
-app.use(passport.session())
-app.use(methodOverride("_method"))
 
 
 mongoose

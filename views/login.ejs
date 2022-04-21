@@ -3,7 +3,8 @@
     <!--include header-->
     <div class="loginTab">
         <h1>SIGN IN TO YOUR ACCOUNT</h1>
-        <% if (messages) { %>
+        
+        <% if (typeof message !== "undefined") { %>
             <p>
                 <%= message.error %>
             </p>
