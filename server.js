@@ -80,7 +80,7 @@ app.get('/aboutUs', (req, res) => {
 app.get('/generateDays', (req, res) => {
     res.render("generateDays");
 })
-app.post('/generateDays', (req, res) => {
+app.post('/generateDays', async (req, res) => {
     let from = new Date(req.body.generate.from);
     let to = new Date(req.body.generate.to);
 
@@ -90,7 +90,6 @@ app.post('/generateDays', (req, res) => {
     to.setDate(to.getDate() + 1);
 
     let times = [];
-    let date;
 
     let currentDate = from;
 
@@ -98,18 +97,17 @@ app.post('/generateDays', (req, res) => {
 
         // iterating from 9 am to 4 pm
         while (currentDate.getHours() <= 16) {
-            times.push(currentDate.getHours());
+            times.push(currentDate.getHours() <= 12 ? currentDate.getHours() : currentDate.getHours() - 12);
             currentDate.setHours(currentDate.getHours() + 1);
         }
-
-        // saving data in database
-        date = new DayModel({ date: currentDate, timeslots: times });
-        console.log(date)
-        date.save().then(function() {
-            console.log("Added day to database!");
-        }).catch(function(error) {
-            console.log("Failed to add day to database!");
-        });
+        // saving the data
+        try {
+            const date = new DayModel({ date: currentDate, timeSlots: times });
+            await date.save();
+          } catch (err) {
+            console.log('err' + err);
+            res.status(500).send(err);
+        }
 
         // incrementing day and resetting time
         currentDate.setDate(currentDate.getDate() + 1);
@@ -120,6 +118,20 @@ app.post('/generateDays', (req, res) => {
     
     res.render("generateDays");
 })
+
+let monthNames = ["", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+for (let i = 1; i<monthNames.length; i++){
+    for (let j = 1; j <= 31; j++){
+        app.get(`/${monthNames[i]}-${j}`, (req,res) => {
+            DayModel.getDay(`${monthNames[i]}-${j}`).then(function(day){
+                console.log(day)
+                res.render("selectTime", {date: day});
+            }).catch(function(error){
+                res.error("Something went wrong! " + error);
+            });
+        })
+    }
+}
 
 app.post(
     "/local",
