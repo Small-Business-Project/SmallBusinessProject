@@ -3,6 +3,9 @@
 <!--include header-->
 <div class ="loginTab">
     <h1>SIGN UP</h1>
+    <% if (messages) { %>
+        <p><%= messages.error %></p>
+        <% } %>
     <form action="/register", method="POST">
         <input type="name" name="email" placeholder="My Name"/>
         <input 

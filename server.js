@@ -1,4 +1,4 @@
-require("dotenv").config();
+require('dotenv').config();
 const express = require('express');
 const dotenv = require('dotenv');
 const morgan = require('morgan');
@@ -12,15 +12,15 @@ const bcrypt = require('bcryptjs');
 const User = require("./models/User");
 const DayModel = require("./models/Day");
 
-
-const path = require('path');
-const { allowedNodeEnvironmentFlags } = require('process');
-
 const {
     checkAuthenticated,
     checkNotAuthenticated,
 } = require('./middlewares/auth');
 
+const app = express();
+
+const path = require('path');
+const { allowedNodeEnvironmentFlags } = require('process');
 
 const initializePassport = require('./passport-config')
 initializePassport(
@@ -35,39 +35,39 @@ initializePassport(
     }
 );
 
-
-const app = express();
+// set view engine
+app.set("view engine", "ejs");
+// parse request to body-parser
+app.use(bodyparser.urlencoded({ extended: true }))
 //.env file allows you to change your localhost connection port
 dotenv.config({ path: 'config.env' })
 const PORT = process.env.PORT || 8080
-
 // log requests
 app.use(morgan('tiny'));
-
-
-// parse request to body-parser
-app.use(bodyparser.urlencoded({ extended: true }))
-
-app.use(session({
+app.use(flash());
+app.use(
+    session({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
 }));
 app.use(passport.initialize())
 app.use(passport.session())
-app.use(methodOverride("_method"))
 app.use(express.static("views"));
+app.use(methodOverride("_method"))
 app.use(express.urlencoded({ extended: true }));
-app.use(flash());
+
 
 
 
 app.get('/', (req, res) => {
     res.render('index');
 })
-app.get('/selectDay', (req, res) => {
-    res.render('selectDay');
+//checks whether authentication is supported
+app.get('/selectDay', checkAuthenticated, (req, res) => {
+    res.render('selectDay',{ name: req.user.name });
 })
+//to check whether user is authenitcated or not
 app.get('/login', checkNotAuthenticated, (req, res) => {
     res.render('login')
 })
@@ -133,12 +133,14 @@ for (let i = 1; i<monthNames.length; i++){
         })
     }
 }
-
+//decides where the user get directed depending on their authentication status
 app.post(
     "/local",
     checkNotAuthenticated,
     passport.authenticate("local", {
-        successRedirect: "/",
+        //Successful authentication will redirect them to day selection
+        successRedirect: "/selectDay",
+        //Failure will redirect them to login page
         failureRedirect: "/login",
         failureFlash: true,
     })
@@ -185,13 +187,8 @@ app.get("/listTest", function(req, res) {
 
 
 
-// set view engine
-app.set("view engine", "ejs");
-
-
-
 mongoose
-    .connect('mongodb://localhost:27017/auth', {
+    .connect('mongodb://localhost:27017/auth?directConnection=true', {
         useUnifiedTopology: true,
         useNewUrlParser: true,
     })
