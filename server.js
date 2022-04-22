@@ -102,7 +102,8 @@ app.post('/generateDays', async (req, res) => {
         }
         // saving the data
         try {
-            const date = new DayModel({ date: currentDate, timeSlots: times });
+            const date = new DayModel({ date: new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate(), 0, 0, 0, 0), timeSlots: times });
+            console.log(date)
             await date.save();
           } catch (err) {
             console.log('err' + err);
