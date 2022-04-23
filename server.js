@@ -64,8 +64,11 @@ app.get('/', (req, res) => {
     res.render('index');
 })
 //checks whether authentication is supported
-app.get('/selectDay', checkAuthenticated, (req, res) => {
-    res.render('selectDay',{ name: req.user.name });
+//app.get('/selectDay', checkAuthenticated, (req, res) => {
+    //res.render('selectDay',{ name: req.user.name });
+//})
+app.get('/selectDay', (req, res) => {
+    res.render('selectDay');
 })
 //to check whether user is authenitcated or not
 app.get('/login', checkNotAuthenticated, (req, res) => {
