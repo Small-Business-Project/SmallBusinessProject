@@ -13,6 +13,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    appointments: {
+        day : {type: Date},
+        time: {type: Number}
+    }
 },
 );
 
