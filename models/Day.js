@@ -1,7 +1,10 @@
 const mongoose = require('mongoose');
 
 let DaySchema = new mongoose.Schema({
-    date: Date,
+    date: {
+        type: Date,
+        unique: true
+    },
     timeSlots: [{
         type: Number
     }]

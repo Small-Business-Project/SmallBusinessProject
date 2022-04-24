@@ -138,7 +138,15 @@ for (let i = 1; i<monthNames.length; i++){
 }
 
 app.post('/selectTime', (req,res) =>{
-    console.log(req.body.selectedTime.date)
+    const date = new Date(req.body.selectedTime.date)
+    let timeSlotSelection = req.body.selectedTime.hour
+    let month = date.getMonth() + 1
+    let day = date.getDate()
+    DayModel.getDay(monthNames[month] + '-' + day).then(async function(day){
+        const index = day[0].timeSlots.indexOf(timeSlotSelection);
+        day[0].timeSlots.splice(index, 1);
+        await DayModel.updateOne({date: day[0].date}, {timeSlots: day[0].timeSlots})
+    })
 })
 //decides where the user get directed depending on their authentication status
 app.post(

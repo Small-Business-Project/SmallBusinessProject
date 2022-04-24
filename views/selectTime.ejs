@@ -7,7 +7,7 @@
 <div id="timeslots">
 <input style="display: none;" type="text" id="date" name="selectedTime[date]" value="<%= date[0].date %>"><br>
 <% for(time of date[0].timeSlots) { %>
-    <% let timeFormatted = (time < 12 ? time + ":00 AM" : time + ":00 PM") %>
+    <% let timeFormatted = (time < 12 && time >= 8 ? time + ":00 AM" : time + ":00 PM") %>
     
     <div>
         <input name="selectedTime[hour]" type="radio" id="<%= time %>" value="<%= time %>" checked>
