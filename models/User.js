@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+//sets up the schema for the user inputs expected
 const userSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -9,15 +9,12 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    pasword: {
+    password: {
         type: String,
         required: true,
     },
-    appointments: {
-        day : {type: Date},
-        time: {type: Number}
-    }
-});
+},
+);
 
 const User = mongoose.model('User',userSchema)
 module.exports = User;

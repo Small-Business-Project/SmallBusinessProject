@@ -138,23 +138,15 @@ for (let i = 1; i<monthNames.length; i++){
 }
 
 app.post('/selectTime', (req,res) =>{
-    const date = new Date(req.body.selectedTime.date)
-    let timeSlotSelection = req.body.selectedTime.hour
-    let month = date.getMonth() + 1
-    let day = date.getDate()
-    DayModel.getDay(monthNames[month] + '-' + day).then(async function(day){
-        const index = day[0].timeSlots.indexOf(timeSlotSelection);
-        day[0].timeSlots.splice(index, 1);
-        await DayModel.updateOne({date: day[0].date}, {timeSlots: day[0].timeSlots})
-    })
+    console.log(req.body.selectedTime.date)
 })
 //decides where the user get directed depending on their authentication status
 app.post(
-    "/local",
+    "/login",
     checkNotAuthenticated,
     passport.authenticate("local", {
         //Successful authentication will redirect them to day selection
-        successRedirect: "/selectDay",
+        successRedirect: "/",
         //Failure will redirect them to login page
         failureRedirect: "/login",
         failureFlash: true,
@@ -169,15 +161,17 @@ app.post("/register", checkNotAuthenticated, async(req, res) => {
         res.redirect("/register")
     } else {
         try {
+            //schema for user input
             const hashedPassword = await bcrypt.hash(req.body.password, 10)
             const user = new User({
                 name: req.body.name,
                 email: req.body.email,
-                password: hashedPassword
+                password: hashedPassword,
             })
-
+            //redirects user to login if sign up is successful
             await user.save();
             res.redirect("/login");
+            //otherwise, keeps them in the sign up now page
         } catch (error) {
             console.log(error)
             res.redirect("/register");
