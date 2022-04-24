@@ -45,6 +45,7 @@ body{
     border-radius: 16px;
     width: 100px;
     height: 60px;
+    color: white;
     border: thin;
     background-color: black;
     cursor: pointer;
@@ -83,6 +84,7 @@ body{
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
+    color: white;
     background-color: black;
     border: solid 2px #701634;
 }

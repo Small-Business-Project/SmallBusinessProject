@@ -136,6 +136,10 @@ for (let i = 1; i<monthNames.length; i++){
         })
     }
 }
+
+app.post('/selectTime', (req,res) =>{
+    console.log(req.body.selectedTime.date)
+})
 //decides where the user get directed depending on their authentication status
 app.post(
     "/local",

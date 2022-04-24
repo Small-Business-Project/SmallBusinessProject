@@ -1,11 +1,23 @@
 <!--include header-->
 <%-include('include/_header')%>
 <!--include header-->
-<ul>
-    <% //for(time of date.timeSlots) { %>
-        <li style="color: black">Date: <%= date %> </li>
-    <% //} %>
-</ul>
+<div class="popUpContainer">
+<h3>Select Timeslot</h3>
+<form method="post" action="/selectTime">
+<div id="timeslots">
+<input style="display: none;" type="text" id="date" name="selectedTime[date]" value="<%= date[0].date %>"><br>
+<% for(time of date[0].timeSlots) { %>
+    <% let timeFormatted = (time < 12 ? time + ":00 AM" : time + ":00 PM") %>
+    
+    <div>
+        <input name="selectedTime[hour]" type="radio" id="<%= time %>" value="<%= time %>" checked>
+        <label for="<%= timeFormatted %>"><%= timeFormatted %></label>
+    </div>
+<% } %>
+<input class="submit" type="submit" value="Submit">
+</div>
+</form>
+</div>
 <!--include footer-->
 <%-include('include/_footer')%>
 <!--include footer-->
