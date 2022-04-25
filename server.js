@@ -80,6 +80,9 @@ app.get('/register', checkNotAuthenticated, (req, res) => {
 app.get('/aboutUs', (req, res) => {
     res.render('aboutUs');
 })
+app.get('/index', (req, res) => {
+    res.render('index');
+})
 app.get('/generateDays', (req, res) => {
     res.render("generateDays");
 })

@@ -10,6 +10,11 @@
     <link rel="stylesheet" type="text/css" href="/assets/css/index.css" />
     <link rel="stylesheet" href="/assets/css/aboutUs.css">
     
+    <!-- for index.js -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
    
     
     <title>Business Website</title>
@@ -31,13 +36,19 @@
                      link__hover-effect
                      link__hover-effect--black
                      ">Make an Appointment</a>
+
+                     <a href="index" class=" 
+                     nav__link--anchor
+                     link__hover-effect
+                     link__hover-effect--black">Home Page</a>
     
                         <a href="/login" class="
                        nav__link--anchor
                        nav__link--anchor-primary
                        ">Log In</a>
+                       
                        <form action="/logout?_method=DELETE" method="POST">
-                        <button type="submit">LOGOUT</button>
+                        <button class = "button" style="background-color: #701634; border-radius: 6px;" type="submit" >LOGOUT</button>
                       </form>
 
                     </li>

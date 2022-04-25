@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,700&display=swap');
-*
-{
+
+
+*{
     font-family: 'Lato', sans-serif;
     padding: 0;
     margin: 0;
@@ -70,7 +71,7 @@ nav{
 /* Sets a oval border around contact text and whitens text*/
 .nav__link--anchor-primary{
     
-    background-color: #701634;
+    background-color:#891216;
     padding: 8px 20px;
     border-radius: 50px;
 
@@ -78,7 +79,7 @@ nav{
 /* Shifts colors when you hover over conact*/
 .nav__link--anchor-primary:hover {
     
-    background-color: wheat; 
+    background-color: #891216; 
 }
 
 .generate{
@@ -88,7 +89,7 @@ nav{
     gap: 8px;
   }
   .main > form > button {
-    background-color: #701634;
+    background-color: #891216;
     padding: 15px;
     width: 95%;
     border: none;
