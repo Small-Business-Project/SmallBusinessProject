@@ -1,20 +1,17 @@
 <!--include header-->
 <%-include('include/_header')%>
 <!--include header-->
-    <div class="gridContainer">
-        <%  let monthNames = ["", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-            let today = new Date();
-            let currentMonth = monthNames[today.getMonth()];
-            let numberOfDays = new Date(today.getFullYear(), today.getMonth()+1, 0).getDate();
-        %>
-        <% for(let i=1; i<=numberOfDays; i++) { %>
 
-            <div class="day">
-                <a href="<%= currentMonth + "-" + i%>" class="day--link" id="<%= currentMonth + "-" + i%>"><%= currentMonth + " " + i %></a>
-            </div>
+    <div class="year"></div>
 
-        <% } %>
+    <div class="prevAndNext">
+        <button class="prev">PREVIOUS MONTH</button>
+        <button class="next">NEXT MONTH</button>
     </div>
+
+    <div class="gridContainer">
+    </div>
+<script src="./assets/js/selectDay.js"></script>
 <!--include footer-->
 <%-include('include/_footer')%>
 <!--include footer-->
