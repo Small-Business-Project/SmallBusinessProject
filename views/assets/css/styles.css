@@ -87,4 +87,17 @@ nav{
     padding: 0 10% 0 10%;
     gap: 8px;
   }
-}
+  .main > form > button {
+    background-color: #701634;
+    padding: 15px;
+    width: 95%;
+    border: none;
+    color: white;
+    margin-top: 20px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .main > form > button:focus {
+    outline: none;
+  }
