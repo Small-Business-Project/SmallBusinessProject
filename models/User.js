@@ -12,10 +12,6 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true,
-    },
-    appointments: {
-        day : {type: Date},
-        time: {type: Number}
     }
 },
 );

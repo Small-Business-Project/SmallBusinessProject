@@ -163,7 +163,7 @@ app.post(
 
 app.post("/register", checkNotAuthenticated, async(req, res) => {
     const userFound = await User.findOne({ email: req.body.email })
-
+    console.log(req)
     if (userFound) {
         req.flash("error", "User with that email already exists")
         res.redirect("/register")
@@ -172,8 +172,8 @@ app.post("/register", checkNotAuthenticated, async(req, res) => {
             //schema for user input
             const hashedPassword = await bcrypt.hash(req.body.password, 10)
             const user = new User({
-                name: req.body.name,
-                email: req.body.email,
+                name: req.body.email[0],
+                email: req.body.email[1],
                 password: hashedPassword,
             })
             //redirects user to login if sign up is successful
