@@ -45,9 +45,8 @@ body{
     border-radius: 16px;
     width: 100px;
     height: 60px;
-    color: white;
     border: thin;
-    background-color: black;
+    background-color: white; /* color changed here*/
     cursor: pointer;
 }
 .submit:hover{
@@ -78,20 +77,19 @@ body{
     width: 100%;
 }
 .popUpContainer h3{
-    color: black;
+    color: white; /* changed */
 }
 .day{
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
-    color: white;
-    background-color: black;
-    border: solid 2px #701634;
+    background-color: #701634; /*changed*/
+    border: solid 2px #620000;
 }
 .day:hover{
     background-color: #701634;
     cursor: pointer;
-    border: solid 2px black;
+    border: solid 2px white;
 }
 .day a{
     padding: 16px;
