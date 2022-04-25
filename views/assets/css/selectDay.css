@@ -95,3 +95,16 @@ body{
     padding: 16px;
     text-decoration: none;
 }
+.prevAndNext{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 1% 10% -9% 10%;
+}
+
+.year{
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 2%;
+}
