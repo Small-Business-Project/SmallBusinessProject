@@ -2,14 +2,27 @@
 <%-include('include/_header')%>
 <!--include header-->
 
-    <div class="year"></div>
+    
 
     <div class="prevAndNext">
-        <button class="prev">PREVIOUS MONTH</button>
-        <button class="next">NEXT MONTH</button>
+        <button id="prev" class="nav__link--anchor nav__link--anchor-primary">PREVIOUS MONTH</button>
+        <div>
+            <div id="year"></div>
+            <br>
+            <div id="month"></div>
+        </div>
+        
+        <button id="next" class="nav__link--anchor nav__link--anchor-primary">NEXT MONTH</button>
     </div>
 
     <div class="gridContainer">
+        <div class="day day-label">Sunday</div>
+        <div class="day day-label"></div>
+        <div class="day day-label"></div>
+        <div class="day day-label"></div>
+        <div class="day day-label"></div>
+        <div class="day day-label"></div>
+        <div class="day day-label"></div>
     </div>
 <script src="./assets/js/selectDay.js"></script>
 <!--include footer-->

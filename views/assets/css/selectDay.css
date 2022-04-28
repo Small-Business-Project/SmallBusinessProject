@@ -41,6 +41,9 @@ body{
     padding: 0;
     transform: rotate(45deg);
 }
+#selectTimeSlot{
+    color: black;
+}
 .submit{
     border-radius: 16px;
     width: 100px;
@@ -58,7 +61,7 @@ body{
 .gridContainer{
     display: grid;
     padding: 10%;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     justify-content: center;
 }
 .gridContainer *{
@@ -79,12 +82,15 @@ body{
 .popUpContainer h3{
     color: white; /* changed */
 }
-.day{
+.day, .day-label{
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
     background-color: #701634; /*changed*/
     border: solid 2px #620000;
+}
+.day{
+    align-items: flex-start;
 }
 .day:hover{
     background-color: #701634;
@@ -102,7 +108,28 @@ body{
     margin: 1% 10% -9% 10%;
 }
 
-.year{
+.day-label{
+    background-color: black;
+    border: 0;
+}
+.day-label:hover{
+    background-color: black;
+    border: 0;
+}
+.nextMonth, .prevMonth{
+    filter: brightness(75%);
+}
+#prev, #next{
+    color: white;
+    border: 1px solid black;
+    cursor: pointer;
+}
+#prev:hover, #next:hover{
+    color: black;
+    background-color: white;
+    border-color: #701634;
+}
+#year, #month{
     font-size: 32px;
     font-weight: bold;
     text-align: center;

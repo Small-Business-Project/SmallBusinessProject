@@ -2,7 +2,7 @@
 <%-include('include/_header')%>
 <!--include header-->
 <div class="popUpContainer">
-<h3>Select Timeslot</h3>
+<h3 id="selectTimeSlot">Select Timeslot</h3>
 <form method="post" action="/selectTime">
 <div id="timeslots">
 <input style="display: none;" type="text" id="date" name="selectedTime[date]" value="<%= date[0].date %>"><br>
