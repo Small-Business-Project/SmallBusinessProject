@@ -19,9 +19,9 @@ function removeAllChildNodes(parent) {
 
 function generateDaysofPreviousMonth(cont){
     const numberOfDaysOfPrev = new Date(today.getFullYear(), today.getMonth(), 0).getDate();
-    let startDay = numberOfDaysOfPrev - firstDayOfMonth;
+    let startDay = numberOfDaysOfPrev - firstDayOfMonth + 1;
     let prevMonth = today.getMonth() > 0 ? today.getMonth() - 1 : 11;
-    for(startDay; startDay<numberOfDaysOfPrev; startDay++) {
+    for(startDay; startDay<=numberOfDaysOfPrev; startDay++) {
         let linkCont = document.createElement('div');
         linkCont.classList.add("day");
         linkCont.classList.add("prevMonth");
