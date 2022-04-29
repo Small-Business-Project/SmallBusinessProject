@@ -67,9 +67,6 @@ app.get('/', (req, res) => {
 //app.get('/selectDay', checkAuthenticated, (req, res) => {
     //res.render('selectDay',{ name: req.user.name });
 //})
-app.get('/selectDay', (req, res) => {
-    res.render('selectDay');
-})
 //to check whether user is authenitcated or not
 app.get('/login', checkNotAuthenticated, (req, res) => {
     res.render('login')
@@ -83,9 +80,17 @@ app.get('/aboutUs', (req, res) => {
 app.get('/index', (req, res) => {
     res.render('index');
 })
+
+// Calendar Start //
+
+app.get('/selectDay', (req, res) => {
+    res.render('selectDay');
+})
+
 app.get('/generateDays', (req, res) => {
     res.render("generateDays");
 })
+
 app.post('/generateDays', async (req, res) => {
     let from = new Date(req.body.generate.from);
     let to = new Date(req.body.generate.to);
@@ -149,8 +154,14 @@ app.post('/selectTime', (req,res) =>{
         const index = day[0].timeSlots.indexOf(timeSlotSelection);
         day[0].timeSlots.splice(index, 1);
         await DayModel.updateOne({date: day[0].date}, {timeSlots: day[0].timeSlots})
-    })
+    });
+    console.log(req.user);
+    res.redirect('/selectDay');
+    
 })
+
+// Calendar End //
+
 //decides where the user get directed depending on their authentication status
 app.post(
     "/login",
@@ -205,7 +216,13 @@ app.get("/listTest", function(req, res) {
 
 });
 
+// Confirm Start
 
+app.get("/confirm", (req,res) => {
+    res.render("confirm");
+});
+
+// Confirm End
 
 mongoose
     .connect('mongodb://localhost:27017/auth?directConnection=true', {
