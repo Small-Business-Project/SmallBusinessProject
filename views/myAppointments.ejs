@@ -1,0 +1,17 @@
+<!--include header-->
+<%-include('include/_header')%>
+<!--include header-->
+
+<body>
+    
+    <h1>My Appointments</h1>
+    <ul>
+        <% for(appointment of appointments) { %>
+        <li><%= appointment.date %> At <%= appointment.time %> </li>
+        <% } %>
+    </ul>
+
+</body>
+<!--include footer-->
+<%-include('include/_footer')%>
+<!--include footer-->

@@ -154,11 +154,18 @@ app.post('/selectTime', (req,res) =>{
         const index = day[0].timeSlots.indexOf(timeSlotSelection);
         day[0].timeSlots.splice(index, 1);
         await DayModel.updateOne({date: day[0].date}, {timeSlots: day[0].timeSlots})
+        let appointment = {date: day[0].date, time: timeSlotSelection};
+        req.user.appointments.push(appointment);
+        await User.updateOne({email: req.user.email}, {appointments: req.user.appointments});
     });
-    console.log(req.user);
+
     res.redirect('/selectDay');
     
 })
+
+app.get('/myAppointments', (req,res) => {
+    res.render('myAppointments', {appointments: req.user.appointments});
+});
 
 // Calendar End //
 
