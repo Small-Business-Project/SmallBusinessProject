@@ -1,0 +1,14 @@
+
+*.json
+*.md
+node_modules/xdg-basedir/license
+*.ts
+*.js
+node_modules/wrappy/LICENSE
+node_modules/write-file-atomic/LICENSE
+node_modules/widest-line/license
+*.txt
+node_modules/utils-merge/.npmignore
+*.ps1
+*.bnf
+*.cmd
