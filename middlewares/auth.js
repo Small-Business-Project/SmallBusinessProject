@@ -12,6 +12,13 @@ function checkAuthenticated(req, res, next) {
     res.redirect('/login');
 }
 
+const isAdmin = (req, res, next) =>{
+    if(req.user.roles === 'admin') {
+        return next();
+    }
+    res.redirect('/')
+};
+
 module.exports = {
     checkNotAuthenticated,
     checkAuthenticated,

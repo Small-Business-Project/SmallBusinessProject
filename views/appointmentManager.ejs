@@ -1,0 +1,42 @@
+<!--include header-->
+<%-include('include/_header')%>
+<!--include header-->
+
+<body>
+    <div class="container">
+        <h2 class ="text-gradient">My Appointments</h2>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Name</th>
+                    <th>Appointment</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <% for(var i = 0; i < user.length; i++) {%>
+                        <tr>
+                          <td><%= user[i].name%></td>
+                          <td><%= user[i].appointments%></td>
+                          <td><%= user[i].status%>
+                                <div class="radio inline">
+                                    <input type="radio" id="radio-4" name="status" value="Confirm" >
+                                    <label for="radio-4" class="radio-label">Confirm</label>
+                                </div>
+                                <div class="radio inline">
+                                    <input type="radio" id="radio-5" name="status" value="Decline" >
+                                    <label for="radio-5" class="radio-label">Decline</label>
+                                </div> 
+                          </td>
+                        </tr>
+                       <% } %>
+            </tbody>
+    
+        </table>
+    </div>
+
+</body>
+<!--include footer-->
+<%-include('include/_footer')%>
+<!--include footer-->

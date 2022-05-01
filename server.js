@@ -22,7 +22,8 @@ const app = express();
 const path = require('path');
 const { allowedNodeEnvironmentFlags } = require('process');
 
-const initializePassport = require('./passport-config')
+const initializePassport = require('./passport-config');
+const { db } = require('./models/User');
 initializePassport(
     passport,
     async(email) => {
@@ -158,10 +159,6 @@ app.post('/selectTime', (req,res) =>{
     
 })
 
-app.get('/myAppointments', checkAuthenticated, (req,res) => {
-    res.render('myAppointments', {appointments: req.user.appointments});
-});
-
 // Calendar End //
 
 //decides where the user get directed depending on their authentication status
@@ -203,6 +200,19 @@ app.post("/register", checkNotAuthenticated, async(req, res) => {
         }
     }
 });
+
+//displays the appointments only for the logged in User
+app.get('/myAppointments', checkAuthenticated, (req,res) => {
+    res.render('myAppointments', {appointments: req.user.appointments});
+});
+//displays all appointments and users logged in the database
+app.get('/appointmentManager', checkAuthenticated,(req,res) => {
+    db.collection('users').find().toArray()
+    .then(results => {
+        res.render('appointmentManager', {user: results})
+    })
+    .catch()
+})
 
 app.delete("/logout", (req, res) => {
     req.logOut()
