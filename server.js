@@ -219,14 +219,6 @@ app.get("/listTest", function(req, res) {
 
 });
 
-// Confirm Start
-
-app.get("/confirm", (req,res) => {
-    res.render("confirm");
-});
-
-// Confirm End
-
 mongoose
     .connect('mongodb://localhost:27017/auth?directConnection=true', {
         useUnifiedTopology: true,

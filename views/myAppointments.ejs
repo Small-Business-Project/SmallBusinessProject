@@ -3,13 +3,20 @@
 <!--include header-->
 
 <body>
+    <div class="container">
+        <h2 class ="text-gradient">My Appointments</h2>
+        <table class="table">
+            <tbody>
+                <tr>
+                    <% for(appointment of appointments) { %>
+                    <td><%= appointment.date %> At <%= appointment.time %></td>
+                </tr>
+                <% } %>
     
-    <h1>My Appointments</h1>
-    <ul>
-        <% for(appointment of appointments) { %>
-        <li><%= appointment.date %> At <%= appointment.time %> </li>
-        <% } %>
-    </ul>
+            </tbody>
+    
+        </table>
+    </div>
 
 </body>
 <!--include footer-->
