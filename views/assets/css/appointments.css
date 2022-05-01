@@ -55,3 +55,13 @@ table{
     background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+#my-a table{
+    border-spacing: 0px;
+    width: 50%;
+    margin-left: 25%;
+    margin-right: 20%;
+}
+
+#my-a .table tr:hover{
+    background-color: #F4C2C2;
+}

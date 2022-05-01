@@ -1,25 +1,30 @@
-<!--include header-->
+<!-- include header -->
 <%-include('include/_header')%>
 <!--include header-->
 
-<body>
-    
+-<body id="my-a" >
+
     <h2 class ="text-gradient">My Appointments</h2>
     <table class="table">
-        <thead class="thread-dark">
+        <thead class="thead-dark">
+            <tr>
+                <th>Day</th>
+                <th>Time</th>
+            </tr>
         </thead>
         <tbody>
             <tr>
                 <% for(appointment of appointments) { %>
-                <td><%= appointment.date %> At <%= appointment.time %></td>
+                <td><%= appointment.date %></td>
+                <td><%= appointment.time %></td>
             </tr>
             <% } %>
-
         </tbody>
-
     </table>
 
 </body>
 <!--include footer-->
 <%-include('include/_footer')%>
-<!--include footer-->
+<!--include footer
+
+    
