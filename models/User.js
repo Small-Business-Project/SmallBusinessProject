@@ -17,6 +17,10 @@ const userSchema = new mongoose.Schema({
         type: String
     },
     appointments: [{ date: Date, time: Number }],
+    
+    isAdmin: {
+        type: Boolean
+    }
 },
 );
 

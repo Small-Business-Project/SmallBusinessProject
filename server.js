@@ -12,6 +12,8 @@ const bcrypt = require('bcryptjs');
 const User = require("./models/User");
 const DayModel = require("./models/Day");
 
+let adminEmail = ""
+
 const {
     checkAuthenticated,
     checkNotAuthenticated,
@@ -184,10 +186,15 @@ app.post("/register", checkNotAuthenticated, async(req, res) => {
         try {
             //schema for user input
             const hashedPassword = await bcrypt.hash(req.body.password, 10)
+            let admin = false;
+            if(req.body.email == adminEmail){
+                admin = true;
+            }
             const user = new User({
-                name: req.body.email[0],
-                email: req.body.email[1],
+                name: req.body.name,
+                email: req.body.email,
                 password: hashedPassword,
+                isAdmin: admin,
             })
             //redirects user to login if sign up is successful
             await user.save();
@@ -203,31 +210,24 @@ app.post("/register", checkNotAuthenticated, async(req, res) => {
 
 //displays the appointments only for the logged in User
 app.get('/myAppointments', checkAuthenticated, (req,res) => {
-    res.render('myAppointments', {appointments: req.user.appointments});
+    if(req.user.isAdmin){
+        db.collection('users').find().toArray()
+        .then(results => {
+            res.render('appointmentManager', {user: results})
+        })
+        .catch()
+    }
+    else{
+        res.render('myAppointments', {appointments: req.user.appointments});
+    }
+    
 });
-//displays all appointments and users logged in the database
-app.get('/appointmentManager', checkAuthenticated,(req,res) => {
-    db.collection('users').find().toArray()
-    .then(results => {
-        res.render('appointmentManager', {user: results})
-    })
-    .catch()
-})
 
 app.delete("/logout", (req, res) => {
     req.logOut()
     req.session.destroy();
     res.redirect("/");
 })
-
-app.get("/listTest", function(req, res) {
-    DayModel.listAllDays().then(function(days) {
-        res.render("listTest", { days: days });
-    }).catch(function(error) {
-        res.error("Something went wrong! " + error);
-    });
-
-});
 
 mongoose
     .connect('mongodb://localhost:27017/auth?directConnection=true', {
