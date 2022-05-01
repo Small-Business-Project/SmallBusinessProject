@@ -44,6 +44,7 @@ dotenv.config({ path: 'config.env' })
 const PORT = process.env.PORT || 8080
 // log requests
 app.use(morgan('tiny'));
+//flash messages
 app.use(flash());
 app.use(
     session({
@@ -57,16 +58,10 @@ app.use(express.static("views"));
 app.use(methodOverride("_method"))
 app.use(express.urlencoded({ extended: true }));
 
-
-
-
 app.get('/', (req, res) => {
     res.render('index');
 })
-//checks whether authentication is supported
-//app.get('/selectDay', checkAuthenticated, (req, res) => {
-    //res.render('selectDay',{ name: req.user.name });
-//})
+
 //to check whether user is authenitcated or not
 app.get('/login', checkNotAuthenticated, (req, res) => {
     res.render('login')
@@ -83,10 +78,10 @@ app.get('/index', (req, res) => {
 
 // Calendar Start //
 
-app.get('/selectDay', (req, res) => {
-    res.render('selectDay');
+//checks whether authentication is supported
+app.get('/selectDay', checkAuthenticated, (req, res) => {
+    res.render('selectDay',{ name: req.user.name });
 })
-
 app.get('/generateDays', (req, res) => {
     res.render("generateDays");
 })
@@ -163,7 +158,7 @@ app.post('/selectTime', (req,res) =>{
     
 })
 
-app.get('/myAppointments', (req,res) => {
+app.get('/myAppointments', checkAuthenticated, (req,res) => {
     res.render('myAppointments', {appointments: req.user.appointments});
 });
 
@@ -211,7 +206,8 @@ app.post("/register", checkNotAuthenticated, async(req, res) => {
 
 app.delete("/logout", (req, res) => {
     req.logOut()
-    res.redirect("/login");
+    req.session.destroy();
+    res.redirect("/");
 })
 
 app.get("/listTest", function(req, res) {
