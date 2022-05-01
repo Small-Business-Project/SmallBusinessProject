@@ -12,7 +12,7 @@ const bcrypt = require('bcryptjs');
 const User = require("./models/User");
 const DayModel = require("./models/Day");
 
-let adminEmail = ""
+let adminEmail = "test@gmail.com";
 
 const {
     checkAuthenticated,
