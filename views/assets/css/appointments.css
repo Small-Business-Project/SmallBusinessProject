@@ -47,7 +47,7 @@ table{
     color: black;
     background-color: rgb(168, 25, 54);
     border-color: rgb(168, 25, 54);
-    width: fit-content;
+    /* width: fit-content; */
 }
 .text-gradient{
     background: linear-gradient(to right,  rgb(168, 25, 54), rgb(168, 25, 54));
@@ -66,7 +66,7 @@ table{
     background-color: #F4C2C2;
 }
 
-
+/* radio button style  */
 .radio-inline{
   color: #9d0b0b;
   display: block;
