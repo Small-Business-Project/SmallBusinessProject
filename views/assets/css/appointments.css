@@ -24,7 +24,7 @@
 }
 table{
     border-spacing: 0px;
-    width: 150%; 
+    width: 100%; 
 
 }
 .table td, .table th{
@@ -122,3 +122,23 @@ input[type='radio']:checked + .check::before{
 input[type='radio']:checked + label{
     color: #0DFF92;
 } 
+
+#btn1 button{
+    color: #FFFF;
+    position: absolute;
+    background-color:rgb(168, 25, 54);
+    border:none; 
+    border-radius:10px; 
+    padding:15px;
+    min-height:30px; 
+    min-width: 120px;
+    cursor: pointer;
+}
+#btn1 button:active{
+    transform: scale(0.95);
+    box-shadow: 3px 2px 22px 1px rgba(0,0,0,0.24);
+}
+
+.fa-spin:hover{
+    color:#9d0b0b
+}
