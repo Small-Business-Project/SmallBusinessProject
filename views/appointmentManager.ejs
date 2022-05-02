@@ -19,15 +19,21 @@
                         <tr>
                           <td><%= user[i].name%></td>
                           <td><%= user[i].appointments%></td>
-                          <td><%= user[i].status%>
-                                <div class="radio inline">
-                                    <input type="radio" id="radio-4" name="status" value="Confirm" >
-                                    <label for="radio-4" class="radio-label">Confirm</label>
-                                </div>
-                                <div class="radio inline">
-                                    <input type="radio" id="radio-5" name="status" value="Decline" >
-                                    <label for="radio-5" class="radio-label">Decline</label>
-                                </div> 
+                          <td><%= user[i].status%></td> 
+                          <td> 
+                            <div class="radio-inline">
+                                <ul>
+                                    <li>
+                                        <input type="radio" id="radio-4" name="status" value="Confirm" checked>
+                                        <label for="radio-4" class="radio-label"><i class="fa-solid fa-circle-check"></i></label>    
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="radio-5" name="status" value="Decline" checked>
+                                        <label for="radio-5" class="radio-label"><i class="fa-solid fa-circle-xmark"></i></label>
+                                    </li>
+                                </ul>
+                            </div>
+                              </ul>
                           </td>
                         </tr>
                        <% } %>
