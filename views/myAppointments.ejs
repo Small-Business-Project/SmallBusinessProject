@@ -16,7 +16,7 @@
         <tbody>
             <tr>
                 <% for(appointment of appointments) { %>
-                <td><%= appointment.date %></td>
+                <td><%= appointment.date.toDateString() %></td>
                 <td><%= appointment.time %></td>
                 <td><%= appointment.status %></td>
             </tr>
