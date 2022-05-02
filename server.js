@@ -223,10 +223,10 @@ app.get('/myAppointments', checkAuthenticated, (req,res) => {
     
 });
 
-app.delete("/logout", (req, res) => {
+app.get("/logout", (req, res) => {
     req.logOut()
     req.session.destroy();
-    res.redirect("/");
+    res.redirect("/login");
 })
 
 mongoose
