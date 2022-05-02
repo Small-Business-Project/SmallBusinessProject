@@ -39,6 +39,8 @@ li {
     margin: 0 auto;
     padding: 0 12px;
 }
+
+
 nav *{
     color: white;
 }
@@ -55,14 +57,12 @@ nav{
     padding: 0 12px;
 
 }
-
 .nav__link--list {
     display: flex;
-    padding-left: 60%;
+    padding-left: 55%;
  }
 /* Sets the color of navigation text and spacing*/
 .nav__link--anchor{
-    
     margin: 0 12px;
     color: wh;
     text-decoration: none;
