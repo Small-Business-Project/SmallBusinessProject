@@ -19,7 +19,7 @@
                     <% for(var i = 0; i < user.length; i++) {%>
                         <tr>
                           <td><%= user[i].name%></td>
-                          <td><%= user[i].appointments%></td>
+                          <td><%= JSON.stringify(user[i].appointments)%></td>
                           <td><%= user[i].status%></td> 
                           <td> 
                             <div class="radio-inline">

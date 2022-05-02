@@ -213,7 +213,7 @@ app.get('/myAppointments', checkAuthenticated, (req,res) => {
     if(req.user.isAdmin){
         db.collection('users').find().toArray()
         .then(results => {
-            res.render('appointmentManager', {user: results})
+            res.render('appointmentManager', {user: results, appointments: req.user.appointments})
         })
         .catch()
     }

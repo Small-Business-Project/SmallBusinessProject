@@ -10,6 +10,7 @@
             <tr>
                 <th>Day</th>
                 <th>Time</th>
+                <th>Status</th>
             </tr>
         </thead>
         <tbody>
@@ -17,6 +18,7 @@
                 <% for(appointment of appointments) { %>
                 <td><%= appointment.date %></td>
                 <td><%= appointment.time %></td>
+                <td><%= appointment.status %></td>
             </tr>
             <% } %>
         </tbody>
