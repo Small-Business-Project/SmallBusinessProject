@@ -194,6 +194,7 @@ app.post("/register", checkNotAuthenticated, async(req, res) => {
                 name: req.body.name,
                 email: req.body.email,
                 password: hashedPassword,
+                status: req.body.status,
                 isAdmin: admin,
             })
             //redirects user to login if sign up is successful
@@ -222,6 +223,10 @@ app.get('/myAppointments', checkAuthenticated, (req,res) => {
     }
     
 });
+//attempt to insert users appointment status into mongo database
+app.post('/myAppointments', checkAuthenticated, async(req,res) => {
+    const userFound = await User.updateOne({ status: req.body.status })
+})
 
 app.get("/logout", (req, res) => {
     req.logOut()
